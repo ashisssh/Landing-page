@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="public/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
@@ -13,7 +14,7 @@
 
 <!-- first block -->
       <div class="row firstblock" >
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-3 col-md-4">
           <table >
              <tr>
                <td>
@@ -64,7 +65,7 @@
 
 <!-- second block         -->
 
-        <div class="col-lg-4 col-md-4" style="background-color: white; margin-bottom: 50px; padding-top: 30px;">
+        <div class="col-lg-6 col-md-4" style="background-color: white; margin-bottom: 50px; padding-top: 30px; padding-left: 40px;">
            <h4 style="color: blue;">Retirement Income</h4>
            <h3 style="font-family: serif; font-weight:600;">Starting Year 2056</h3>
            <div class="row" style="padding-top : 40px;">
@@ -96,39 +97,105 @@
                    </div>
            </div>
 
+           <div class="row">
+             <div class="col-lg-12 col-md-12">
+         <canvas id="myChart"></canvas>
+             </div>
+
+
+
+           <script>
+             let myChart = document.getElementById('myChart').getContext('2d');
+
+             // Global Options
+             Chart.defaults.global.defaultFontFamily = 'Lato';
+             Chart.defaults.global.defaultFontSize = 18;
+             Chart.defaults.global.defaultFontColor = '#777';
+
+             let EmployeeChart = new Chart(myChart, {
+               type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+               data:{
+                 labels:['20', '', '25', '', '30', '','35'],
+                 datasets:[{
+                   data:[
+                     0,
+                     100,
+                     200,
+                     300,
+                     400,
+                     500,
+                   ],
+                   //backgroundColor:'green',
+                   backgroundColor:[
+                     'rgb(45, 49, 250)',
+                     'rgb(45, 49, 250)',
+                     'rgb(45, 49, 250)',
+                     'rgb(45, 49, 250)',
+                     'rgb(45, 49, 250)',
+                     'rgb(45, 49, 250)',
+                     'rgb(45, 49, 250)'
+                   ],
+                   borderWidth:1,
+                   borderColor:'rgb(45, 49, 250)',
+                   hoverBorderWidth:3,
+                   hoverBorderColor:'#000'
+                 }]
+               },
+               options:{
+                 title:{
+                   display:true,
+                 },
+
+                 layout:{
+                   padding:{
+                     left:50,
+                     right:0,
+                     bottom:0,
+                     top:0
+                   }
+                 },
+                 tooltips:{
+                   enabled:true
+                 }
+               }
+             });
+           </script>
+
+</div>
+
+
+
            <p><b>How do i compare to my peers?</b></p>
            <p style="font-family: Georgia, serif; font-size: 0.6rem; color:#73777B;font-weight:700;">These numbers represent current goal achievement</p>
            <div class="row">
-             <div class="col-lg-4 col-md-4">
+            <div class="col-lg-4 col-md-2">
                <p><b> Age:</b> under 30 <i class="fa-solid fa-angle-down"></i></p><hr>
               <p><b> Salary:</b>K 20-K 30 <i class="fa-solid fa-angle-down"></i></p><hr>
               <p><b> Gender:</b> Male <i class="fa-solid fa-angle-down"></i></p><hr>
              </div>
-             <div class="col-lg-2">
+             <div class="col-lg-2 col-md-2">
                 <div class="circle-wrap">
                   <div class="circle">
                       <div class="inside-circle"> 75% </div>
                   </div>
                 </div>
-            <p>Average</p>
+            <p style="text-align: center;">Average</p>
            </div>
-
-           <div class="col-lg-2">
+           <div class="col-lg-2 col-md-2">
               <div class="circle-wrap">
                 <div class="circle">
                     <div class="inside-circle"> 95% </div>
                 </div>
               </div>
-          <p>Top</p>
+          <p style="text-align: center;">Top</p>
          </div>
-
-         <div class="col-lg-2">
+         <div class="col-lg-2 col-md-2">
             <div class="circle-wrap">
               <div class="circle">
                   <div class="inside-circle"> 59% </div>
               </div>
             </div>
-        <p>Me</p>
+        <p style="text-align: center;">Me</p>
        </div>
 
                </div>
@@ -136,7 +203,7 @@
 
 <!-- third block -->
 
-        <div class="col-lg-4 col-md-4" style="padding-left: 40px;">
+        <div class="col-lg-3 col-md-4" style="padding-left: 40px;">
           <h4 style="font-weight: 600;" >Retirement Strategy</h4>
            <p style="font-size: 1rem; font-family: Georgia, serif; padding-top: 50px; font-weight: 550; font-size: 1rem;">Employee Contribution</p>
           <div>
