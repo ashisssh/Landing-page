@@ -4,6 +4,6 @@ const app = express();
 app.get("/", function(req, res){
   res.sendFile(__dirname + "/index.html")
 });
-app.listen(3000, function(req, res){
+app.listen(process.env.PORT || 3000, function(req, res){
   console.log("Server is running on localhost 3000");
 });
